@@ -49,6 +49,7 @@
                 <th>Description</th>
                 <th>Place</th>
                 <th>Phone</th>
+                <th>Attendance Groups</th>
                 <th>Action</th>
             </tr>
 
@@ -61,8 +62,7 @@
                 <td>{{$school->description}}</td>
                 <td>{{$school->place}}</td>
                 <td>{{$school->phone}}</td>
-                
-
+                <td>{{count($school->schoolAttendancegroups)}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{route('school.show', [$school])}}">Show</a>
                     <a class="btn btn-success" href="{{route('school.edit', [$school])}}">Edit</a>

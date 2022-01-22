@@ -49,6 +49,7 @@
                 <th>Description</th>
                 <th>Difficulty</th>
                 <th>School</th>
+                <th>Students</th>
                 <th>Action</th>
             </tr>
 
@@ -61,7 +62,7 @@
                 <td>{{$attendancegroup->description}}</td>
                 <td>{{$attendancegroup->difficulty}}</td>
                 <td>{{$attendancegroup->schoolAttendancegroup->name}}</td>                
-
+                <td>{{count($attendancegroup->schoolAttendancegroups)}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{route('attendancegroup.show', [$attendancegroup])}}">Show</a>
                     <a class="btn btn-success" href="{{route('attendancegroup.edit', [$attendancegroup])}}">Edit</a>
