@@ -15,10 +15,11 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             //             ID
-// name(string)
-// surname(string)
-// group_id(bigInt)
-// image_url(string)
+            // name(string)
+            // surname(string)
+            // group_id(bigInt)
+            // image_url(string)
+            $table->id();
             $table->string('name');
             $table->string('surname');
             // $table->foreign('type_id')->references('id')->on('types');

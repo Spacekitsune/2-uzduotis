@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Edit school</title>
+    <title>Edit attendance group</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -22,25 +22,25 @@
 
 <body>
     <div class="container">
-        <h1>Edit school</h1>
+        <h1>Edit attendance group</h1>
 
         <table class="table table-striped">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Place</th>
-                <th>Phone</th>
+                <th>Difficulty level</th>
+                <th>School</th>
 
             </tr>
 
 
             <tr>
-                <td>{{$school->id}}</td>
-                <td>{{$school->name}}</td>
-                <td>{{$school->description}}</td>
-                <td>{{$school->place}}</td>
-                <td>{{$school->phone}}</td>
+                <td>{{$attendancegroup->id}}</td>
+                <td>{{$attendancegroup->name}}</td>
+                <td>{{$attendancegroup->description}}</td>
+                <td>{{$attendancegroup->difficulty}}</td>
+                <td>{{$attendancegroup->schoolAttendancegroup->name}}</td>
 
             </tr>
 
@@ -50,12 +50,20 @@
         </br>
         </br>
 
-        <form action="{{ route('school.update', [$school]) }}" method="POST">
+        <form action="{{ route('attendancegroup.update', [$attendancegroup]) }}" method="POST">
 
-            <input class="form-control" type="text" name="school_name" value="{{$school->name}}"> </br>
-            <textarea class="form-control" name="school_description" cols="30" rows="10">{{$school->description}}</textarea></br>
-            <input class="form-control" type="text" name="school_place" value="{{$school->place}}"> </br>
-            <input class="form-control" type="number" name="school_phone" value="{{$school->phone}}"> </br>
+            <input class="form-control" type="text" name="attendancegroup_name" value="{{$attendancegroup->name}}"> </br>
+            <textarea class="form-control" name="attendancegroup_description" cols="30" rows="10">{{$attendancegroup->description}}</textarea></br>
+            <input class="form-control" type="text" name="attendancegroup_difficulty" value="{{$attendancegroup->difficulty}}"> </br>
+            <select name="attendancegroup_school_id" class="form-control form-select">
+                @foreach ($select_values as $school)
+                @if ($school->id == $attendancegroup->school_id)
+                <option value="{{$school->id}}" selected>{{$school->name}}</option>
+                @else
+                <option value="{{$school->id}}"> {{$school->name}} </option>
+                @endif
+                @endforeach
+            </select></br>
 
 
             <!-- apsauga nuo formos patvirtinimo už puslapio ribų -->
@@ -66,7 +74,7 @@
         </form>
     </div>
     <div class="container my-6">
-        <a href="{{ route('school.index') }}" class="btn btn-info">Back</a>
+        <a href="{{ route('attendancegroup.index') }}" class="btn btn-info">Back</a>
     </div>
 </body>
 
