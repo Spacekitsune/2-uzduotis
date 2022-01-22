@@ -60,7 +60,7 @@
                 <td>{{$attendancegroup->id}}</td>
                 <td>{{$attendancegroup->name}}</td>
                 <td>{{$attendancegroup->description}}</td>
-                <td>{{$attendancegroup->difficulty}}</td>
+                <td>{{$attendancegroup->difficultyAttendancegroups->name}}</td>
                 <td>{{$attendancegroup->schoolAttendancegroup->name}}</td>                
                 <td>{{count($attendancegroup->attendancegroupStudent)}}</td>
                 <td>

@@ -21,7 +21,7 @@ class AttendanceGroupFactory extends Factory
 // school_id(bigInt)
             'name' => $this->faker->jobTitle(),            
             'description' => $this->faker->realText($maxNbChars = 200, $indexSize = 2),
-            'difficulty' => rand(1,5),
+            'difficulty' => rand(1,4),
             'school_id' => rand(1,10)
         ];
     }

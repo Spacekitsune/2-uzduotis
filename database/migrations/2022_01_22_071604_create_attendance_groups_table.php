@@ -18,7 +18,8 @@ class CreateAttendanceGroupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->string('difficulty');
+            $table->unsignedBigInteger('difficulty');
+            $table->foreign('difficulty')->references('id')->on('difficulties');
             $table->unsignedBigInteger('school_id');
             // $table->foreign('type_id')->references('id')->on('types');
             $table->foreign('school_id')->references('id')->on('schools');

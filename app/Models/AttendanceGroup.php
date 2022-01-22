@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class AttendanceGroup extends Model
 {
     use HasFactory;
+
+    public function difficultyAttendancegroups() {
+        return $this->belongsTo(Difficulty::class, 'difficulty', 'id');
+    }
+
     public function attendancegroupStudent() {
         return $this->hasMany(Student::class, 'group_id', 'id');
     }
