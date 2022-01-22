@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Student info</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -21,67 +21,41 @@
 </head>
 
 <body>
-    <h1>Show type</h1>
+    <div class="container">
+    <h1>Student info</h1>
 
 
 
-    <table>
+    <table class="table table-striped">
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Short name</th>
-            <th>Description</th>
+            <th>Surname</th>
+            <th>Attendance Group</th>
+            <th>Image</th>
 
         </tr>
 
 
         <tr>
-            <td>{{$type->id}}</td>
-            <td>{{$type->name}}</td>
-            <td>{{$type->short_name}}</td>
-            <td>{{$type->description}}</td>
+            <td>{{$student->id}}</td>
+            <td>{{$student->name}}</td>
+            <td>{{$student->surname}}</td>
+            <td>{{$student->studentAttendancegroup->name}}</td>
+            <td><img src="{{$student->image_url}}" alt="{{$student->name}} {{$student->surname}}" width="100px"></td>
 
         </tr>
 
 
     </table>
 
-    <div class="container">
-
-        @if (count($type->typeCompanies)==0)
-        <p>The are no companies</p>
-        @else
-        <table class="table table-stiped">
-        <tr>
-            <th>Company ID</th>
-            <th>Company Name</th>
-            <th>Company description</th>
-            <th>Actions</th>
-        </tr>
-
-        @foreach ($type->typeCompanies as $company)
-        <tr>
-            <td>{{$company->id}}</td>
-            <td>{{$company->name}}</td>
-            <td>{{$company->description}}</td>
-            <td>
-                <form action="{{route('company.destroy', [$company])}}" method="post">
-                    @csrf
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-
-        </tr>
-        
-        @endforeach
-        </table>
-
-        @endif
-
-        <form action="{{route('type.destroy', [$type])}}" method="POST">
-            @csrf
-            <button type="submit">Delete</button>
-        </form>
+    <form action="{{route('student.destroy', [$student])}}" method="POST">
+        @csrf
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+    </div>
+    <div class="container my-6">
+        <a href="{{ route('student.index') }}" class="btn btn-info">Back</a>
     </div>
 </body>
 

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Scholls</title>
+    <title>Student list</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -24,50 +24,47 @@
 
     <div class="container">
 
-        <h1>School list</h1>
-
-        @if (session()->has('error_message'))
-        <div class="alert alert-danger">Delete is not possible while school has attendance groups.</div>
-        @endif
+        <h1>Student list</h1>
 
         @if (session()->has('success_message'))
-        <div class="alert alert-success">School was deleted.</div>
+        <div class="alert alert-success">Student was deleted.</div>
         @endif
 
-        @if (count($schools)== 0)
+        @if (count($students)== 0)
 
         <p>There are no companies</p>
 
         @endif
 
-        <a class="btn btn-primary" href="{{route('school.create')}}">Create new School</a>
+        <a class="btn btn-primary" href="{{route('student.create')}}">Create new Student</a>
 
         <table class="table table-striped">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Place</th>
-                <th>Phone</th>
+                <th>Surname</th>
+                <th>Attendance Group</th>
+                <th>Image</th>
                 <th>Action</th>
             </tr>
 
             <!--blade sintaksė -->
-            @foreach ($schools as $school)
+            @foreach ($students as $student)
 
             <tr>
-                <td>{{$school->id}}</td>
-                <td>{{$school->name}}</td>
-                <td>{{$school->description}}</td>
-                <td>{{$school->place}}</td>
-                <td>{{$school->phone}}</td>
+                <td>{{$student->id}}</td>
+                <td>{{$student->name}}</td>
+                <td>{{$student->surname}}</td>
+                <td>{{$student->studentAttendancegroup->name}}</td>
+                <td><img src="{{$student->image_url}}" alt="{{$student->name}} {{$student->surname}}" width="100px"></td>
                 
 
-                <td>
-                    <a class="btn btn-primary" href="{{route('school.show', [$school])}}">Show</a>
-                    <a class="btn btn-success" href="{{route('school.edit', [$school])}}">Edit</a>
 
-                    <form action="{{route('school.destroy', [$school])}}" method="POST">
+                <td>
+                    <a class="btn btn-primary" href="{{route('student.show', [$student])}}">Show</a>
+                    <a class="btn btn-success" href="{{route('student.edit', [$student])}}">Edit</a>
+
+                    <form action="{{route('student.destroy', [$student])}}" method="POST">
                         @csrf
                         <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
