@@ -103,10 +103,10 @@ class AttendanceGroupController extends Controller
      */
     public function destroy(AttendanceGroup $attendancegroup)
     {
-        // $companies = $type->typeCompanies;
-        // if (count($companies) != 0) {
-        //     return redirect()->route('types.index')->with('error_message', 'Delete is not possible while type has companies.');
-        // } 
+        $students = $attendancegroup->attendancegroupStudent;
+        if (count($students) != 0) {
+            return redirect()->route('attendancegroup.index')->with('error_message', 'Delete is not possible while attendance group has students.');
+        } 
         $attendancegroup->delete();
         return redirect()->route('attendancegroup.index')->with('success_message', 'Attendance group was deleted.');
     }

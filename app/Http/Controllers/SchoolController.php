@@ -99,10 +99,10 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        $attendancegroups = $school->schoolAttendancegroups();
-        // if (count($attendancegroups) != 0) {
-        //     return redirect()->route('school.index')->with('error_message', 'Delete is not possible while type has companies.');
-        // } 
+        $attendancegroups = $school->schoolAttendancegroups;
+        if (count($attendancegroups) != 0) {
+            return redirect()->route('school.index')->with('error_message', 'Delete is not possible while school has attendance groups.');
+        } 
             $school->delete();
             return redirect()->route('school.index')->with('success_message', 'School was deleted.');
     }
