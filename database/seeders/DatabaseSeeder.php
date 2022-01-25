@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AttendanceGroup;
 use Illuminate\Database\Seeder;
-use App\Models\Client;
+use App\Models\Student;
 use App\Models\School;
 
 class DatabaseSeeder extends Seeder
