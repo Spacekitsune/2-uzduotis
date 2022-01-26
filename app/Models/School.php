@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
     use HasFactory;
-    public function Attendancegroups() {
+    public function schoolAttendancegroups() {
         return $this->hasMany(AttendanceGroup::class, 'school_id', 'id');
     }
 }

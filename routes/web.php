@@ -43,3 +43,7 @@ Route::prefix('students')->group(function() {
     Route::get('show/{student}', 'App\Http\Controllers\StudentController@show')->name('student.show');
 
 });
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
